@@ -1,24 +1,29 @@
+
+// Ball sort Puzzle Via Stack .
+// Stack based on array .
 #include<iostream>
 #include<string>
 using namespace std;
-const int MAX_SIZE = 4;
+const int MAX_SIZE = 4;        // Size Array
 template<class t>
-class stack {
+class stack {                 // Stack
 	int top;
 	t item[MAX_SIZE];
 public:
-	stack() :top(-1) {}
-	bool isEmpty()
+	stack()  {
+		top=-1;
+	}
+	bool isEmpty()           // is it stack Empty?
 	{
 		return top < 0;
 	}
 
-	bool Full()
+	bool Full()              //is it stack Full?
 	{
 		return top >= MAX_SIZE-1 ;
 	}
 
-	void push(t Element)
+	void push(t Element)  // push Element in stack
 	{
 		if (top >= MAX_SIZE-1)
 		{
@@ -30,7 +35,7 @@ public:
 			item[top] = Element;
 		}
 	}
-	void pop()
+	void pop()           // pop Element from stack.
 	{
 		if (isEmpty())
 			cout << "stack empty on pop";
@@ -38,13 +43,14 @@ public:
 			top--;
 	}
 
-	t getTop()
+	t getTop()          // return item[top].
 	{
 
 			return item[top];
 
 	}
-	void print(string n) {
+	void print(string n)  // Display Elements of stack.
+	{
 		cout << n << " [ ";
 		for (int i = 0; i <= top; i++)
 		{
@@ -55,7 +61,7 @@ public:
 
 	}
 
-	bool areSame()
+	bool areSame()     // are it all Elements in Stack Same ?
 {
 	int first = item[0];
     if((!isEmpty())&&(!Full()))
@@ -68,14 +74,14 @@ public:
     return 1;
 }
 
-	void pushAll(t arr[])
+	void pushAll(t arr[]) //push all Elements in same time.
 	{
 		for (int i=0;i<MAX_SIZE; i++)
 			push(arr[i]);
 	}
 };
 
-bool check(int arr[])
+bool check(int arr[])    // Is every stack the same or is it empty ?
 {
 int first = arr[0];
 if (arr[0]==0)
@@ -91,19 +97,19 @@ return 1;
 
 
 int main() {
-	stack<int>s1;
+	stack<int>s1;  // Create stack s1 
 	stack<int>s2;
 	stack<int>s3;
 	stack<int>s4;
 	stack<int>s5;
 	stack<int>s6;
 
-	int arr1[]={1,2,2,1};
+	int arr1[]={1,2,2,1}; // elements stack s1
 	int arr2[]={4,4,4,3};
 	int arr3[]={2,1,2,1};
 	int arr4[]={4,3,3,3};
 
-	s1.pushAll(arr1);
+	s1.pushAll(arr1);     // push all elements in stack s1
 	s2.pushAll(arr2);
 	s3.pushAll(arr3);
 	s4.pushAll(arr4);
@@ -112,16 +118,16 @@ int main() {
 	cout<<"you should write (s1 or s2 or s3 or s4 or s5 or s6) only"<<endl<<endl;
 
 	while(true){
-	s1.print("s1");
+	s1.print("s1"); // Display elements stack s1
 	s2.print("s2");
 	s3.print("s3");
 	s4.print("s4");
 	s5.print("s5");
 	s6.print("s6");
-
-	int arrCheck[]={s1.areSame(),s2.areSame(),s3.areSame(),s4.areSame(),s5.areSame(),s6.areSame()};
+	int arrCheck[]={s1.areSame(),s2.areSame(),s3.areSame(),s4.areSame(),s5.areSame(),s6.areSame()}; // An array that stores the state of each stack, are its elements the same or not?
 	
-	if(check(arrCheck)){
+	if(check(arrCheck))  // check elements arrCheck , is it same ?
+	{
 		cout<<"Congratulations, you have successfully completed the game"<<endl<<endl;
 		break;
 	}
@@ -130,9 +136,9 @@ int main() {
 		
 		string src,dis;
 		cout<<"Source : ";
-		cin>>src;
+		cin>>src;                // input name of source stack 
 		cout<<"Destination  : ";
-		cin>>dis;
+		cin>>dis;				 // input name of Destination stack 
 
 			
 		
